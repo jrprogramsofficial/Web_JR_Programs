@@ -6,7 +6,10 @@
    Para añadir o quitar capturas, edita las rutas de cada grupo.
    ============================================================ */
 
-export const GALLERY = {
+const BASE = import.meta.env.BASE_URL;
+const withBase = (p) => BASE + p.replace(/^\//, "");
+
+const RAW_GALLERY = {
   ventabox: [
     {
       num: "01",
@@ -227,3 +230,10 @@ export const GALLERY = {
     },
   ],
 };
+
+export const GALLERY = Object.fromEntries(
+  Object.entries(RAW_GALLERY).map(([slug, groups]) => [
+    slug,
+    groups.map((g) => ({ ...g, imgs: g.imgs.map(withBase) })),
+  ]),
+);

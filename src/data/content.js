@@ -11,6 +11,9 @@
    Mientras no existan, se muestra la imagen de respaldo (fallback).
    ============================================================ */
 
+const BASE = import.meta.env.BASE_URL;
+const withBase = (p) => BASE + p.replace(/^\//, "");
+
 export const NAV_LINKS = [
   ["Apps", "#apps"],
   ["Características", "#features"],
@@ -37,7 +40,7 @@ export const APPS = [
       "Ventas, mermas y movimientos",
       "Reportes e historial de ventas",
     ],
-    img: "/images/VentaBox.png",
+    img: withBase("/images/VentaBox.png"),
     fallback:
       "https://image.qwenlm.ai/public_source/3a2bb54f-4db9-4140-93ea-2f4cb3ec538e/154d778c7-0251-4e72-b4f8-7acfaca5aa86.png",
     icon: "cart",
@@ -54,7 +57,7 @@ export const APPS = [
       "Materiales y movimientos",
       "Reportes y comprobantes",
     ],
-    img: "/images/TuOrden.png",
+    img: withBase("/images/TuOrden.png"),
     fallback:
       "https://image.qwenlm.ai/public_source/3a2bb54f-4db9-4140-93ea-2f4cb3ec538e/12e7ccd58-3681-4973-aa78-5ed7926d9fb0.png",
     icon: "box",

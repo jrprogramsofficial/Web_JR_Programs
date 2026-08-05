@@ -43,6 +43,7 @@ import {
   Route,
   Outlet,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 import ScrollProgress from "./components/ScrollProgress";
 import Navbar from "./components/Navbar";
@@ -50,6 +51,22 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import AppPage from "./components/AppPage";
 import NotFound from "./components/NotFound";
+
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+function DeepLinkRedirect() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search).get("p");
+    if (p && p !== "/") {
+      window.history.replaceState(null, "", BASE || "/");
+      navigate(p, { replace: true });
+    }
+  }, [navigate]);
+
+  return null;
+}
 
 function ScrollReset() {
   const { pathname, hash } = useLocation();
@@ -82,7 +99,8 @@ function SiteLayout() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={BASE}>
+      <DeepLinkRedirect />
       <Routes>
         <Route element={<SiteLayout />}>
           <Route path="/" element={<Home />} />
