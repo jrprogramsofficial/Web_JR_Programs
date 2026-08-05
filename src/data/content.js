@@ -126,7 +126,7 @@ export const SOCIALS = [
   {
     name: "YouTube",
     handle: "JRPrograms",
-    url: "https://youtube.com/@jrprograms",
+    url: "https://www.youtube.com/channel/UC_YQ-bw0dsgmM0saOV2-1DA",
     icon: "youtube",
     cls: "text-[#f87171] border-[#f87171]/30 bg-[#f87171]/10 hover:bg-[#f87171]/20 hover:border-[#f87171]/60",
   },
