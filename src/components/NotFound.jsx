@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Icon from "./Icon";
+import { useSEO, SEO_CONFIG } from "../utils/seo.jsx";
 
 export default function NotFound() {
+  useSEO(SEO_CONFIG.notfound);
   return (
     <main className="relative grid-bg min-h-[60vh] flex flex-col items-center justify-center text-center px-6 pt-24 pb-20">
       <motion.div

@@ -6,6 +6,7 @@ import AppGallery from "./AppGallery";
 import NotFound from "./NotFound";
 import { APPS } from "../data/content";
 import { GALLERY } from "../data/gallery";
+import { useSEO, SEO_CONFIG } from "../utils/seo.jsx";
 
 const handleImgError = (e, fallback) => {
   const el = e.currentTarget;
@@ -18,6 +19,9 @@ const handleImgError = (e, fallback) => {
 export default function AppPage() {
   const { slug } = useParams();
   const app = APPS.find((a) => a.slug === slug);
+
+  const seoKey = slug === 'ventabox' ? 'ventabox' : 'tuorden';
+  useSEO(SEO_CONFIG[seoKey]);
 
   if (!app) return <NotFound />;
 

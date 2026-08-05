@@ -1,0 +1,21 @@
+{
+  "name": "JRPrograms - VentaBox y TuOrden",
+  "short_name": "JRPrograms",
+  "description": "Apps de escritorio para Windows: VentaBox (inventario y ventas) y TuOrden (bar y restaurante). Listas para usar.",
+  "start_url": "/Web_JR_Programs/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "es",
+  "dir": "ltr"
+}

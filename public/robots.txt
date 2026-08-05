@@ -1,0 +1,11 @@
+# JRPrograms - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://jrprogramsofficial.github.io/Web_JR_Programs/sitemap.xml
+
+# Host
+Host: https://jrprogramsofficial.github.io/Web_JR_Programs
+
+# No disallow any pages - all content should be indexed

@@ -1,3 +1,4 @@
+import { useSEO, SEO_CONFIG } from "../utils/seo.jsx";
 import Hero from "./Hero";
 import Marquee from "./Marquee";
 import AppsSection from "./AppsSection";
@@ -7,6 +8,7 @@ import SocialsSection from "./SocialsSection";
 import ContactSection from "./ContactSection";
 
 export default function Home() {
+  useSEO(SEO_CONFIG.home);
   return (
     <main>
       <Hero />
