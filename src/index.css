@@ -62,13 +62,23 @@ body {
   50%, 100% { opacity: 0; }
 }
 
-@keyframes spinSlow {
-  to { transform: rotate(360deg); }
-}
-
 @keyframes pulseGlow {
   0%, 100% { opacity: 0.45; }
   50% { opacity: 1; }
+}
+
+/* ===== Accesibilidad: menos movimiento ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ===== Detalles ===== */

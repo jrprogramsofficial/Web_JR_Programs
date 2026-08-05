@@ -117,23 +117,16 @@ export default function Hero() {
             <HeroLogo />
           </div>
 
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          <div
+            style={{ animation: "floatY 5s ease-in-out infinite" }}
             className="absolute top-8 right-2 md:right-10 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0f172a]/90 backdrop-blur px-4 py-3 shadow-[0_0_30px_-10px_rgba(56,189,248,0.5)]"
           >
             <Icon name="windows" className="w-4 h-4 text-[#38bdf8]" />
             <p className="text-[11px] font-mono-tech text-slate-300">Windows</p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1,
-            }}
+          <div
+            style={{ animation: "floatY 6s ease-in-out infinite 1s" }}
             className="absolute bottom-10 left-2 md:left-8 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0f172a]/90 backdrop-blur px-4 py-3 shadow-[0_0_30px_-10px_rgba(192,132,252,0.5)]"
           >
             <span
@@ -143,7 +136,7 @@ export default function Hero() {
             <p className="text-[11px] font-mono-tech text-slate-300">
               listas para usar
             </p>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

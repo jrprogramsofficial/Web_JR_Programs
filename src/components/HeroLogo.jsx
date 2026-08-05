@@ -8,11 +8,10 @@ export default function HeroLogo() {
           <stop offset="50%" stopColor="#818cf8" />
           <stop offset="100%" stopColor="#c084fc" />
         </linearGradient>
-        <filter id="hGlow" x="-40%" y="-40%" width="180%" height="180%">
-          <feGaussianBlur stdDeviation="12" result="b" />
-          <feComposite in="SourceGraphic" in2="b" operator="over" />
-        </filter>
       </defs>
+
+      {/* Glow estático (barato: un solo elemento con opacidad, sin blur animado) */}
+      <circle cx="400" cy="320" r="120" fill="url(#hGrad)" opacity="0.08" />
 
       <circle
         cx="400"
@@ -22,11 +21,6 @@ export default function HeroLogo() {
         stroke="#1e293b"
         strokeWidth="2"
         strokeDasharray="6 10"
-        style={{
-          transformBox: "fill-box",
-          transformOrigin: "center",
-          animation: "spinSlow 46s linear infinite",
-        }}
       />
       <circle
         cx="400"
@@ -36,11 +30,6 @@ export default function HeroLogo() {
         stroke="#1e293b"
         strokeWidth="1.5"
         strokeDasharray="3 8"
-        style={{
-          transformBox: "fill-box",
-          transformOrigin: "center",
-          animation: "spinSlow 30s linear infinite reverse",
-        }}
       />
 
       <g
@@ -49,7 +38,6 @@ export default function HeroLogo() {
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
-        filter="url(#hGlow)"
       >
         <path d="M 300 240 L 210 320 L 300 400" />
         <path d="M 500 240 L 590 320 L 500 400" />
