@@ -119,7 +119,7 @@ export const SOCIALS = [
   {
     name: "Instagram",
     handle: "@jrprograms",
-    url: "https://instagram.com/jrprograms",
+    url: "https://www.instagram.com/jrprograms/",
     icon: "instagram",
     cls: "text-[#f472b6] border-[#f472b6]/30 bg-[#f472b6]/10 hover:bg-[#f472b6]/20 hover:border-[#f472b6]/60",
   },
