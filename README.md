@@ -29,8 +29,17 @@ npm run lint     # eslint
 
 Las páginas de las apps se generan dinámicamente desde `APPS` en
 `src/data/content.js` (campo `slug`). El routing usa `react-router-dom`
-(BrowserRouter); en un hosting estático configura una reescritura de todas las
-rutas al `index.html` (Vercel/Netlify lo hacen automáticamente).
+(BrowserRouter) con `basename` de Vite; en GitHub Pages, `public/404.html`
+redirige las rutas profundas (`/apps/...`) al `index.html` para que no den 404.
+
+## Despliegue (GitHub Pages)
+
+En vivo: https://jrprogramsofficial.github.io/Web_JR_Programs/
+
+- `vite.config.js` usa `base: '/Web_JR_Programs/'` (ajústalo si cambias el repo).
+- El workflow `.github/workflows/deploy.yml` hace build y despliega automáticamente
+  en cada push a `main` (fuente de Pages: **GitHub Actions**).
+- Para volver a desplegar manualmente: Actions → "Deploy to GitHub Pages" → Run workflow.
 
 ## Estructura
 
