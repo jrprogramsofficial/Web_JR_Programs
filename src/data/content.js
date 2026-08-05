@@ -111,8 +111,8 @@ export const SUPPORT_EMAIL = "jrprogramsofficial@gmail.com";
 export const SOCIALS = [
   {
     name: "Telegram",
-    handle: "@jrprograms",
-    url: "https://t.me/jrprograms",
+    handle: "@JrPrograms",
+    url: "https://t.me/JrPrograms",
     icon: "telegram",
     cls: "text-[#38bdf8] border-[#38bdf8]/30 bg-[#38bdf8]/10 hover:bg-[#38bdf8]/20 hover:border-[#38bdf8]/60",
   },
