@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JRPrograms — Redirigiendo…</title>
+    <script>
+      (function () {
+        // GitHub Pages no tiene SPA fallback: cualquier ruta desconocida
+        // sirve este archivo. Redirigimos a index.html con ?p=<ruta> para
+        // que la app recupere la ruta original (ver DeepLinkRedirect en App.jsx).
+        var seg = window.location.pathname.split("/");
+        var base = seg.slice(0, 2).join("/");
+        var rest = seg.slice(2).join("/") || "/";
+        var target = base + "/index.html?p=" + encodeURIComponent("/" + rest);
+        window.location.replace(target);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
