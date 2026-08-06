@@ -37,19 +37,19 @@ jobs:
       
       - name: Build
         run: npm run build
-        timeout: 10m
+        timeout-minutes: 10
       
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        timeout: 1m
+        timeout-minutes: 1
       
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-        timeout: 2m
+        timeout-minutes: 2
       
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        timeout: 5m
+        timeout-minutes: 5
