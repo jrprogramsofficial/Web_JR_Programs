@@ -49,7 +49,7 @@ export default function OfferSection() {
                 {app.tagline}
               </p>
 
-              <div className="space-y-3 mb-8 text-left">
+              <div className="space-y-3 mb-6 text-left">
                 {offerPlans.map((p) => (
                   <div
                     key={p.label}
@@ -68,6 +68,13 @@ export default function OfferSection() {
                     </span>
                   </div>
                 ))}
+              </div>
+
+              <div className="mb-8 flex items-center justify-center gap-2 rounded-xl border border-[#34d399]/20 bg-[#34d399]/5 px-4 py-3">
+                <Icon name="check" className="w-4 h-4 text-[#34d399]" />
+                <span className="text-xs font-semibold text-[#34d399]">
+                  {t.ui.offerTrial}
+                </span>
               </div>
 
               <p className="text-sm text-slate-400 leading-6 mb-8">{o.detail}</p>

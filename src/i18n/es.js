@@ -32,8 +32,7 @@ export const ES = {
         "Reportes e historial de ventas",
       ],
       img: withBase("/images/VentaBox.png"),
-      fallback:
-        "https://image.qwenlm.ai/public_source/3a2bb54f-4db9-4140-93ea-2f4cb3ec538e/154d778c7-0251-4e72-b4f8-7acfaca5aa86.png",
+      fallback: withBase("/images/placeholder.svg"),
       icon: "cart",
       grad: "from-[#38bdf8] to-[#818cf8]",
     },
@@ -49,8 +48,7 @@ export const ES = {
         "Reportes y comprobantes",
       ],
       img: withBase("/images/TuOrden.png"),
-      fallback:
-        "https://image.qwenlm.ai/public_source/3a2bb54f-4db9-4140-93ea-2f4cb3ec538e/12e7ccd58-3681-4973-aa78-5ed7926d9fb0.png",
+      fallback: withBase("/images/placeholder.svg"),
       icon: "box",
       grad: "from-[#818cf8] to-[#c084fc]",
     },
@@ -448,6 +446,7 @@ export const ES = {
       "VentaBox y TuOrden se contratan por suscripción: mensual, semestral o anual, en CUP o USD. Elige tu plan y escríbeme por WhatsApp.",
     offerCta: "Consultar por",
     offerSecondary: "o escríbeme por las redes",
+    offerTrial: "7 días de prueba gratis · uso completo de la app",
 
     // Contact
     contactTitlePre: "¿Problemas con una app?",
