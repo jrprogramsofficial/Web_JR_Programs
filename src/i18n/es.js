@@ -503,3 +503,12 @@ export const ES = {
     galNext: "Siguiente",
   },
 };
+
+/* Aplica el prefijo base a las capturas de la galería */
+const RAW_GALLERY = ES.gallery;
+ES.gallery = Object.fromEntries(
+  Object.entries(RAW_GALLERY).map(([slug, groups]) => [
+    slug,
+    groups.map((g) => ({ ...g, imgs: g.imgs.map(withBase) })),
+  ]),
+);
