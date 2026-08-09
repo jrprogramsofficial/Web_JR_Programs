@@ -18,6 +18,7 @@ export const NAV_LINKS = [
   ["Apps", "#apps"],
   ["Características", "#features"],
   ["Plataformas", "#plataformas"],
+  ["Oferta", "#oferta"],
   ["Redes", "#redes"],
 ];
 
@@ -107,6 +108,27 @@ export const MARQUEE = [
 ];
 
 export const SUPPORT_EMAIL = "jrprogramsofficial@gmail.com";
+
+export const OFFER = {
+  ctaLabel: "Telegram",
+  ctaUrl: "https://t.me/JrPrograms",
+  priceDefault: "Precio a consultar",
+  cardNote:
+    "Adquiere una licencia de uso única para tu negocio. Escríbeme y te explico el plan que mejor se adapte a ti.",
+};
+
+export const OFFERS = [
+  {
+    slug: "ventabox",
+    price: "Precio a consultar",
+    detail: "Licencia única · inventario y ventas para tu tienda.",
+  },
+  {
+    slug: "tuorden",
+    price: "Precio a consultar",
+    detail: "Licencia única · órdenes y cuentas para tu bar o restaurante.",
+  },
+];
 
 export const SOCIALS = [
   {
