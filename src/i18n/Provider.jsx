@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ES } from "./es.js";
 import { EN } from "./en.js";
 import { I18nContext } from "./context.js";
+import LanguageChooser from "./LanguageChooser.jsx";
 
 const LANGS = { es: ES, en: EN };
 const STORAGE_KEY = "jr-lang";
@@ -14,19 +15,14 @@ function getInitialLang() {
   } catch {
     /* localStorage no disponible */
   }
-  if (
-    typeof navigator !== "undefined" &&
-    navigator.language?.toLowerCase().startsWith("en")
-  ) {
-    return "en";
-  }
-  return "es";
+  return null;
 }
 
 export default function LangProvider({ children }) {
   const [lang, setLang] = useState(getInitialLang);
 
   useEffect(() => {
+    if (!lang) return;
     try {
       localStorage.setItem(STORAGE_KEY, lang);
     } catch {
@@ -35,7 +31,12 @@ export default function LangProvider({ children }) {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const value = useMemo(() => ({ lang, setLang, t: LANGS[lang] }), [lang]);
+  const value = useMemo(() => ({ lang, setLang, t: LANGS[lang ?? "es"] }), [lang]);
 
-  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
+  return (
+    <I18nContext.Provider value={value}>
+      {children}
+      {lang === null && <LanguageChooser setLang={setLang} />}
+    </I18nContext.Provider>
+  );
 }
