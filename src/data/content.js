@@ -110,23 +110,26 @@ export const MARQUEE = [
 export const SUPPORT_EMAIL = "jrprogramsofficial@gmail.com";
 
 export const OFFER = {
-  ctaLabel: "Telegram",
-  ctaUrl: "https://t.me/JrPrograms",
-  priceDefault: "Precio a consultar",
+  ctaLabel: "WhatsApp",
+  ctaUrl: "https://wa.me/5351431995",
   cardNote:
-    "Adquiere una licencia de uso única para tu negocio. Escríbeme y te explico el plan que mejor se adapte a ti.",
+    "Elige el plan que mejor se adapte a tu negocio y escríbeme por WhatsApp para concretar el pago y recibir tu licencia.",
 };
+
+export const OFFER_PLANS = [
+  { label: "Mensual", cup: "3000 CUP", usd: "$5" },
+  { label: "Cada 6 meses", cup: "15000 CUP", usd: "$25" },
+  { label: "Anual", cup: "30000 CUP", usd: "$48", badge: "mejor precio" },
+];
 
 export const OFFERS = [
   {
     slug: "ventabox",
-    price: "Precio a consultar",
-    detail: "Licencia única · inventario y ventas para tu tienda.",
+    detail: "Suscripción periódica para tu tienda: inventario y ventas siempre al día.",
   },
   {
     slug: "tuorden",
-    price: "Precio a consultar",
-    detail: "Licencia única · órdenes y cuentas para tu bar o restaurante.",
+    detail: "Suscripción periódica para tu bar o restaurante: órdenes y cuentas sin caos.",
   },
 ];
 

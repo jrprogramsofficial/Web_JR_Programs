@@ -1,9 +1,9 @@
-/* src/components/OfferSection.jsx — Cómo obtener las apps (oferta / precios) */
+/* src/components/OfferSection.jsx — Cómo obtener las apps (planes y precios) */
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import SectionHead from "./SectionHead";
-import { APPS, OFFER, OFFERS } from "../data/content";
+import { APPS, OFFER, OFFER_PLANS, OFFERS } from "../data/content";
 
 export default function OfferSection() {
   return (
@@ -12,10 +12,10 @@ export default function OfferSection() {
         kicker="// 05 — OFERTA"
         title={
           <>
-            ¿Cómo obtenerlas? <span className="text-gradient">Así de simple</span>
+            Planes <span className="text-gradient">periódicos</span>
           </>
         }
-        desc="VentaBox y TuOrden se adquieren por licencia directa. Escríbeme, te cuento los planes y la que mejor se adapte a tu negocio."
+        desc="VentaBox y TuOrden se contratan por suscripción: mensual, semestral o anual, en CUP o USD. Elige tu plan y escríbeme por WhatsApp."
       />
 
       <div className="grid sm:grid-cols-2 gap-6">
@@ -46,12 +46,28 @@ export default function OfferSection() {
                 {app.tagline}
               </p>
 
-              <p className="font-display text-3xl font-bold text-gradient mb-3">
-                {o.price}
-              </p>
-              <p className="text-sm text-slate-400 leading-6 mb-8">
-                {o.detail}
-              </p>
+              <div className="space-y-3 mb-8 text-left">
+                {OFFER_PLANS.map((p) => (
+                  <div
+                    key={p.label}
+                    className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-[#020617]/60 px-5 py-3.5"
+                  >
+                    <span className="flex items-center gap-2 text-sm text-slate-300">
+                      {p.label}
+                      {p.badge && (
+                        <span className="font-mono-tech text-[9px] uppercase tracking-widest text-[#34d399] border border-[#34d399]/30 bg-[#34d399]/10 rounded-full px-2 py-0.5">
+                          {p.badge}
+                        </span>
+                      )}
+                    </span>
+                    <span className="font-mono-tech text-sm text-[#38bdf8] whitespace-nowrap">
+                      {p.cup} · {p.usd}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-sm text-slate-400 leading-6 mb-8">{o.detail}</p>
 
               <a
                 href={OFFER.ctaUrl}
@@ -59,7 +75,7 @@ export default function OfferSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm text-white bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] hover:shadow-[0_0_40px_-10px_rgba(56,189,248,0.7)] transition-shadow"
               >
-                <Icon name="telegram" className="w-4 h-4" /> Consultar por{" "}
+                <Icon name="whatsapp" className="w-4 h-4" /> Consultar por{" "}
                 {OFFER.ctaLabel}
               </a>
               <div className="mt-4">
