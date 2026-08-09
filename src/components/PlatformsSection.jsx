@@ -1,27 +1,28 @@
 /* src/components/PlatformsSection.jsx — Estado por plataforma */
 import { motion } from "framer-motion";
 import SectionHead from "./SectionHead";
-import { PLATFORMS } from "../data/content";
+import { useI18n } from "../i18n/context.js";
 
 export default function PlatformsSection() {
+  const { t } = useI18n();
   return (
     <section
       id="plataformas"
       className="scroll-mt-24 max-w-5xl mx-auto px-6 py-20"
     >
       <SectionHead
-        kicker="// 03 — PLATAFORMAS"
+        kicker={t.ui.platformsKicker}
         title={
           <>
-            Windows hoy,{" "}
-            <span className="text-gradient">mañana ya veremos</span>
+            {t.ui.platformsTitlePre}{" "}
+            <span className="text-gradient">{t.ui.platformsTitleAccent}</span>
           </>
         }
-        desc="Estamos enfocados en una sola plataforma para hacer las cosas bien. El resto llegará cuando tenga que llegar."
+        desc={t.ui.platformsDesc}
       />
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        {PLATFORMS.map((p, i) => (
+        {t.platforms.map((p, i) => (
           <motion.div
             key={p.os}
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +43,7 @@ export default function PlatformsSection() {
             <p
               className={`mt-2 text-[10px] font-mono-tech uppercase tracking-widest ${p.st === "ok" ? "text-[#38bdf8]" : "text-slate-600"}`}
             >
-              {p.st === "ok" ? "disponible" : "por ahora no"}
+              {p.st === "ok" ? t.ui.platformsOk : t.ui.platformsNo}
             </p>
           </motion.div>
         ))}

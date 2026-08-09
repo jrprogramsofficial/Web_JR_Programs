@@ -3,24 +3,27 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import SectionHead from "./SectionHead";
-import { APPS, OFFER, OFFER_PLANS, OFFERS } from "../data/content";
+import { useI18n } from "../i18n/context.js";
 
 export default function OfferSection() {
+  const { t } = useI18n();
+  const { apps, offer, offerPlans, offers } = t;
   return (
     <section id="oferta" className="scroll-mt-24 max-w-5xl mx-auto px-6 py-20">
       <SectionHead
-        kicker="// 05 — OFERTA"
+        kicker={t.ui.offerKicker}
         title={
           <>
-            Planes <span className="text-gradient">periódicos</span>
+            {t.ui.offerTitlePre}{" "}
+            <span className="text-gradient">{t.ui.offerTitleAccent}</span>
           </>
         }
-        desc="VentaBox y TuOrden se contratan por suscripción: mensual, semestral o anual, en CUP o USD. Elige tu plan y escríbeme por WhatsApp."
+        desc={t.ui.offerDesc}
       />
 
       <div className="grid sm:grid-cols-2 gap-6">
-        {OFFERS.map((o, i) => {
-          const app = APPS.find((a) => a.slug === o.slug);
+        {offers.map((o, i) => {
+          const app = apps.find((a) => a.slug === o.slug);
           if (!app) return null;
           return (
             <motion.article
@@ -47,7 +50,7 @@ export default function OfferSection() {
               </p>
 
               <div className="space-y-3 mb-8 text-left">
-                {OFFER_PLANS.map((p) => (
+                {offerPlans.map((p) => (
                   <div
                     key={p.label}
                     className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-[#020617]/60 px-5 py-3.5"
@@ -70,20 +73,20 @@ export default function OfferSection() {
               <p className="text-sm text-slate-400 leading-6 mb-8">{o.detail}</p>
 
               <a
-                href={OFFER.ctaUrl}
+                href={offer.ctaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm text-white bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] hover:shadow-[0_0_40px_-10px_rgba(56,189,248,0.7)] transition-shadow"
               >
-                <Icon name="whatsapp" className="w-4 h-4" /> Consultar por{" "}
-                {OFFER.ctaLabel}
+                <Icon name="whatsapp" className="w-4 h-4" /> {t.ui.offerCta}{" "}
+                {offer.ctaLabel}
               </a>
               <div className="mt-4">
                 <Link
                   to="/#redes"
                   className="text-xs text-slate-500 hover:text-[#38bdf8] transition-colors"
                 >
-                  o escríbeme por las redes
+                  {t.ui.offerSecondary}
                 </Link>
               </div>
             </motion.article>
@@ -98,7 +101,7 @@ export default function OfferSection() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-xl mx-auto mt-10 text-center font-mono-tech text-xs text-slate-500 leading-6"
       >
-        {OFFER.cardNote}
+        {offer.cardNote}
       </motion.p>
     </section>
   );

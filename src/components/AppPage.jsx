@@ -4,10 +4,8 @@ import { motion } from "framer-motion";
 import Icon from "./Icon";
 import AppGallery from "./AppGallery";
 import NotFound from "./NotFound";
-import { APPS } from "../data/content";
-import { GALLERY } from "../data/gallery";
 import { SEO } from "../utils/seo.jsx";
-import { SEO_CONFIG } from "../data/seo.js";
+import { useI18n } from "../i18n/context.js";
 
 const handleImgError = (e, fallback) => {
   const el = e.currentTarget;
@@ -19,7 +17,9 @@ const handleImgError = (e, fallback) => {
 
 export default function AppPage() {
   const { slug } = useParams();
-  const app = APPS.find((a) => a.slug === slug);
+  const { t } = useI18n();
+  const { apps, gallery, seo, ui } = t;
+  const app = apps.find((a) => a.slug === slug);
 
   const seoKey = app ? app.slug : 'notfound';
 
@@ -27,7 +27,7 @@ export default function AppPage() {
 
   return (
     <>
-      <SEO {...SEO_CONFIG[seoKey]} />
+      <SEO {...seo[seoKey]} />
       <main className="relative grid-bg pt-28 pb-24 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
@@ -48,8 +48,7 @@ export default function AppPage() {
             to="/"
             className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-[#38bdf8] transition-colors"
           >
-            <Icon name="arrow" className="w-4 h-4 rotate-180" /> Volver al
-            inicio
+            <Icon name="arrow" className="w-4 h-4 rotate-180" /> {ui.appBack}
           </Link>
         </motion.div>
 
@@ -66,12 +65,11 @@ export default function AppPage() {
                   className="w-1.5 h-1.5 rounded-full bg-[#34d399]"
                   style={{ animation: "pulseGlow 2s infinite" }}
                 />
-                lista para usar
+                {ui.readyToUse}
               </span>
               <span className="flex items-center gap-1.5 text-xs font-mono-tech text-slate-400 border border-white/10 rounded-full px-3 py-1.5">
                 <Icon name="windows" className="w-3 h-3" /> Windows
-              </span>
-              {app.ver && (
+              </span>              {app.ver && (
                 <span className="font-mono-tech text-xs text-slate-600">
                   {app.ver}
                 </span>
@@ -135,13 +133,13 @@ export default function AppPage() {
                 to="/#redes"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] hover:shadow-[0_0_40px_-10px_rgba(56,189,248,0.7)] transition-shadow"
               >
-                <Icon name="arrow" className="w-4 h-4" /> Contáctame
+                <Icon name="arrow" className="w-4 h-4" /> {ui.appContact}
               </Link>
               <Link
                 to="/#apps"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-slate-300 border border-white/10 hover:border-[#818cf8]/50 hover:text-[#818cf8] transition-colors"
               >
-                Ver las apps
+                {ui.appViewApps}
               </Link>
             </motion.div>
           </div>
@@ -164,13 +162,13 @@ export default function AppPage() {
                 <span className="w-3 h-3 rounded-full bg-[#818cf8]/70" />
                 <span className="w-3 h-3 rounded-full bg-[#c084fc]/70" />
                 <span className="ml-3 font-mono-tech text-xs text-slate-500">
-                  {app.name} · vista previa
+                  {app.name} · {ui.appPreview}
                 </span>
               </div>
               <div className="relative aspect-video bg-[#020617]">
                 <img
                   src={app.img}
-                  alt={`Interfaz de ${app.name}`}
+                  alt={`${ui.appImgAlt} ${app.name}`}
                   onError={(e) => handleImgError(e, app.fallback)}
                   className="w-full h-full object-cover object-top"
                 />
@@ -185,7 +183,7 @@ export default function AppPage() {
           </motion.div>
         </div>
 
-        <AppGallery name={app.name} groups={GALLERY[app.slug] || []} />
+        <AppGallery name={app.name} groups={gallery[app.slug] || []} ui={ui} />
 
         <motion.div
           initial={{ opacity: 0, y: 32 }}
@@ -196,25 +194,24 @@ export default function AppPage() {
         >
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent" />
           <h2 className="font-display text-2xl md:text-4xl font-bold text-white mb-4">
-            ¿Problemas? <span className="text-gradient">Te ayudamos</span>
+            {ui.appSupportTitlePre}{" "}
+            <span className="text-gradient">{ui.appSupportTitleAccent}</span>
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto mb-8 leading-7">
-            {app.name} ya está lista para Windows y lista para trabajar. ¿Un
-            error o una duda? Escríbenos al soporte por correo o por mis
-            redes.
+            {ui.appSupportDesc(app.name)}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/#contacto"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm text-white bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] hover:shadow-[0_0_40px_-10px_rgba(56,189,248,0.7)] transition-shadow"
             >
-              <Icon name="mail" className="w-4 h-4" /> Soporte técnico
+              <Icon name="mail" className="w-4 h-4" /> {ui.appSupportBtn}
             </Link>
             <Link
               to="/"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm text-slate-300 border border-white/10 hover:border-[#818cf8]/50 hover:text-[#818cf8] transition-colors"
             >
-              Volver al inicio
+              {ui.appBack}
             </Link>
           </div>
         </motion.div>

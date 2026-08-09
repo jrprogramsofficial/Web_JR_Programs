@@ -1,13 +1,15 @@
 /* src/components/Terminal.jsx — Terminal animada con efecto de escritura */
 import { useState, useEffect, useMemo, useRef } from "react";
-import { TERM_LINES } from "../data/content";
+import { useI18n } from "../i18n/context.js";
 
 export default function Terminal() {
+  const { t } = useI18n();
+  const { termLines } = t;
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
   const total = useMemo(
-    () => TERM_LINES.reduce((a, l) => a + l.t.length, 0),
-    [],
+    () => termLines.reduce((a, l) => a + l.t.length, 0),
+    [termLines],
   );
   const [step, setStep] = useState(0);
 
@@ -36,14 +38,14 @@ export default function Terminal() {
 
   const starts = useMemo(
     () =>
-      TERM_LINES.reduce(
+      termLines.reduce(
         (acc, l) => [...acc, acc[acc.length - 1] + l.t.length],
         [0],
       ),
-    [],
+    [termLines],
   );
 
-  const shown = TERM_LINES.map((l, i) => {
+  const shown = termLines.map((l, i) => {
     const take = Math.max(0, Math.min(l.t.length, step - starts[i]));
     return { ...l, text: l.t.slice(0, take) };
   });

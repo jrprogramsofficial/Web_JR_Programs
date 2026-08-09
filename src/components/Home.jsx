@@ -1,5 +1,5 @@
 import { SEO } from "../utils/seo.jsx";
-import { SEO_CONFIG } from "../data/seo.js";
+import { useI18n } from "../i18n/context.js";
 import Hero from "./Hero";
 import Marquee from "./Marquee";
 import AppsSection from "./AppsSection";
@@ -10,9 +10,10 @@ import OfferSection from "./OfferSection";
 import ContactSection from "./ContactSection";
 
 export default function Home() {
+  const { t } = useI18n();
   return (
     <>
-      <SEO {...SEO_CONFIG.home} />
+      <SEO {...t.seo.home} />
       <main>
         <Hero />
         <Marquee />

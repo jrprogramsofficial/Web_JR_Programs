@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Icon from "./Icon";
 
-export default function AppGallery({ name, groups }) {
+export default function AppGallery({ name, groups, ui }) {
   const [open, setOpen] = useState(null);
 
   const close = useCallback(() => setOpen(null), []);
@@ -40,14 +40,12 @@ export default function AppGallery({ name, groups }) {
         className="max-w-2xl mx-auto text-center mb-14"
       >
         <p className="font-mono-tech text-xs tracking-[0.35em] text-[#38bdf8] mb-4">
-          // GALERÍA
+          {ui.galKicker}
         </p>
         <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
-          Así se ve <span className="text-gradient">{name}</span>
+          {ui.galTitlePre} <span className="text-gradient">{name}</span>
         </h2>
-        <p className="text-slate-400 leading-7">
-          Capturas reales de la aplicación, sección por sección.
-        </p>
+        <p className="text-slate-400 leading-7">{ui.galDesc}</p>
       </motion.div>
 
       <div className="space-y-10">
@@ -73,7 +71,7 @@ export default function AppGallery({ name, groups }) {
                 <p className="text-sm text-slate-400 leading-6">{g.desc}</p>
               </div>
               <span className="hidden sm:block font-mono-tech text-xs text-slate-600 shrink-0 mt-1">
-                {g.imgs.length} {g.imgs.length === 1 ? "captura" : "capturas"}
+                {g.imgs.length} {g.imgs.length === 1 ? ui.galShot : ui.galShots}
               </span>
             </div>
 
@@ -84,7 +82,7 @@ export default function AppGallery({ name, groups }) {
                   type="button"
                   onClick={() => setOpen({ g: gi, i })}
                   className="group relative overflow-hidden rounded-xl border border-white/5 bg-[#020617] aspect-video cursor-zoom-in"
-                  aria-label={`Ver captura de ${g.title}`}
+                  aria-label={`${ui.galViewAria} ${g.title}`}
                 >
                   <img
                     src={src}
@@ -117,7 +115,7 @@ export default function AppGallery({ name, groups }) {
             <button
               type="button"
               onClick={close}
-              aria-label="Cerrar"
+              aria-label={ui.galClose}
               className="absolute top-5 right-5 w-10 h-10 rounded-full border border-white/10 bg-[#0f172a]/80 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#38bdf8]/50 transition-colors"
             >
               <Icon name="close" className="w-5 h-5" />
@@ -129,7 +127,7 @@ export default function AppGallery({ name, groups }) {
                 e.stopPropagation();
                 step(-1);
               }}
-              aria-label="Anterior"
+              aria-label={ui.galPrev}
               className="absolute left-4 md:left-8 w-11 h-11 rounded-full border border-white/10 bg-[#0f172a]/80 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#38bdf8]/50 transition-colors"
             >
               <Icon name="arrow" className="w-5 h-5 rotate-180" />
@@ -164,7 +162,7 @@ export default function AppGallery({ name, groups }) {
                 e.stopPropagation();
                 step(1);
               }}
-              aria-label="Siguiente"
+              aria-label={ui.galNext}
               className="absolute right-4 md:right-8 w-11 h-11 rounded-full border border-white/10 bg-[#0f172a]/80 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#38bdf8]/50 transition-colors"
             >
               <Icon name="arrow" className="w-5 h-5" />

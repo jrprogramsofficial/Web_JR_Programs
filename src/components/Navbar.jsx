@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Icon from "./Icon";
 import LogoMark from "./LogoMark";
-import { NAV_LINKS, SOCIALS } from "../data/content";
+import { useI18n } from "../i18n/context.js";
 
 export default function Navbar() {
+  const { lang, setLang, t } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -30,7 +31,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-6">
           <div className="flex items-center gap-1.5 mr-1">
-            {SOCIALS.map((s) => (
+            {t.socials.map((s) => (
               <a
                 key={s.name}
                 href={s.url}
@@ -43,7 +44,15 @@ export default function Navbar() {
               </a>
             ))}
           </div>
-          {NAV_LINKS.map(([label, href]) => (
+          <button
+            onClick={() => setLang(lang === "es" ? "en" : "es")}
+            aria-label={t.ui.langAria}
+            className="flex items-center gap-1.5 font-mono-tech text-xs font-semibold text-slate-300 px-3 py-1.5 rounded-lg border border-white/10 hover:border-[#38bdf8]/50 hover:text-[#38bdf8] transition-colors"
+          >
+            <Icon name="globe" className="w-3.5 h-3.5" />
+            {lang === "es" ? "EN" : "ES"}
+          </button>
+          {t.nav.map(([label, href]) => (
             <a
               key={href}
               href={href}
@@ -56,13 +65,13 @@ export default function Navbar() {
             href="#contacto"
             className="text-sm font-semibold text-slate-200 px-4 py-2 rounded-lg border border-white/10 hover:border-[#38bdf8]/50 hover:text-[#38bdf8] transition-colors"
           >
-            Soporte
+            {t.ui.navSupport}
           </a>
           <a
             href="#redes"
             className="text-sm font-semibold text-white px-4 py-2 rounded-lg bg-gradient-to-r from-[#38bdf8] to-[#c084fc] hover:shadow-[0_0_30px_-8px_rgba(56,189,248,0.7)] transition-shadow"
           >
-            Contáctame
+            {t.ui.navContact}
           </a>
         </div>
 
@@ -85,7 +94,7 @@ export default function Navbar() {
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               <div className="flex items-center gap-2">
-                {SOCIALS.map((s) => (
+                {t.socials.map((s) => (
                   <a
                     key={s.name}
                     href={s.url}
@@ -98,8 +107,19 @@ export default function Navbar() {
                     <Icon name={s.icon} className="w-4 h-4" />
                   </a>
                 ))}
+                <button
+                  onClick={() => {
+                    setLang(lang === "es" ? "en" : "es");
+                    setMenuOpen(false);
+                  }}
+                  aria-label={t.ui.langAria}
+                  className="flex items-center gap-1.5 font-mono-tech text-xs font-semibold text-slate-300 px-3 py-2 rounded-lg border border-white/10 hover:border-[#38bdf8]/50 hover:text-[#38bdf8] transition-colors"
+                >
+                  <Icon name="globe" className="w-3.5 h-3.5" />
+                  {lang === "es" ? "EN" : "ES"}
+                </button>
               </div>
-              {NAV_LINKS.map(([label, href]) => (
+              {t.nav.map(([label, href]) => (
                 <a
                   key={href}
                   href={href}
@@ -114,14 +134,14 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="text-sm font-semibold text-slate-200 px-4 py-2 rounded-lg border border-white/10 text-center"
               >
-                Soporte
+                {t.ui.navSupport}
               </a>
               <a
                 href="#redes"
                 onClick={() => setMenuOpen(false)}
                 className="text-sm font-semibold text-white px-4 py-2 rounded-lg bg-gradient-to-r from-[#38bdf8] to-[#c084fc] text-center"
               >
-                Contáctame
+                {t.ui.navContact}
               </a>
             </div>
           </motion.div>

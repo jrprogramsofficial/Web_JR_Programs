@@ -3,9 +3,10 @@ import { motion } from "framer-motion";
 import Icon from "./Icon";
 import Terminal from "./Terminal";
 import HeroLogo from "./HeroLogo";
-import { SOCIALS } from "../data/content";
+import { useI18n } from "../i18n/context.js";
 
 export default function Hero() {
+  const { t } = useI18n();
   return (
     <section id="inicio" className="relative grid-bg pt-32 pb-20">
       <div
@@ -27,7 +28,7 @@ export default function Hero() {
               className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"
               style={{ animation: "pulseGlow 2s infinite" }}
             />
-            listas para usar · windows
+            {t.ui.heroBadge}
           </motion.span>
 
           <motion.h1
@@ -36,8 +37,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display text-4xl md:text-6xl font-bold text-white leading-[1.1] mb-6"
           >
-            Tus ventas y tu inventario,{" "}
-            <span className="text-gradient">bajo control</span>.
+            {t.ui.heroTitlePre}{" "}
+            <span className="text-gradient">{t.ui.heroTitleAccent}</span>
+            {t.ui.heroTitlePost}
           </motion.h1>
 
           <motion.p
@@ -46,13 +48,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-slate-400 text-lg leading-8 mb-8 max-w-xl"
           >
-            JRPrograms presenta{" "}
-            <span className="text-[#38bdf8] font-semibold">VentaBox</span> y{" "}
-            <span className="text-[#c084fc] font-semibold">TuOrden</span>: dos
-            herramientas de escritorio para gestionar inventario, ventas y
-            órdenes de tu negocio, sin complicaciones.
+            {t.ui.heroDesc}
           </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,13 +60,13 @@ export default function Hero() {
               href="#apps"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] hover:shadow-[0_0_40px_-10px_rgba(56,189,248,0.7)] transition-shadow"
             >
-              Ver las apps <Icon name="arrow" className="w-4 h-4" />
+              {t.ui.heroCtaApps} <Icon name="arrow" className="w-4 h-4" />
             </a>
             <a
               href="#features"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-slate-200 border border-white/10 hover:border-[#818cf8]/50 hover:text-[#818cf8] transition-colors"
             >
-              Características
+              {t.ui.heroCtaFeatures}
             </a>
           </motion.div>
 
@@ -80,10 +77,10 @@ export default function Hero() {
             className="flex flex-wrap items-center gap-3 mb-10"
           >
             <span className="text-xs font-mono-tech uppercase tracking-widest text-slate-500">
-              Sígueme
+              {t.ui.heroFollow}
             </span>
             <div className="flex items-center gap-2">
-              {SOCIALS.map((s) => (
+              {t.socials.map((s) => (
                 <a
                   key={s.name}
                   href={s.url}
@@ -134,7 +131,7 @@ export default function Hero() {
               style={{ animation: "pulseGlow 2s infinite" }}
             />
             <p className="text-[11px] font-mono-tech text-slate-300">
-              listas para usar
+              {t.ui.heroFloatReady}
             </p>
           </div>
         </motion.div>

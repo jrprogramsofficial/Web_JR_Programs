@@ -2,9 +2,10 @@
 import { motion } from "framer-motion";
 import Icon from "./Icon";
 import SectionHead from "./SectionHead";
-import { FEATURES } from "../data/content";
+import { useI18n } from "../i18n/context.js";
 
 export default function FeaturesSection() {
+  const { t } = useI18n();
   return (
     <section
       id="features"
@@ -12,18 +13,18 @@ export default function FeaturesSection() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <SectionHead
-          kicker="// 02 — CARACTERÍSTICAS"
+          kicker={t.ui.featuresKicker}
           title={
             <>
-              Hechas para trabajar,{" "}
-              <span className="text-gradient">no para estorbar</span>
+              {t.ui.featuresTitlePre}{" "}
+              <span className="text-gradient">{t.ui.featuresTitleAccent}</span>
             </>
           }
-          desc="La filosofía de JRPrograms aplicada a cada app de la familia."
+          desc={t.ui.featuresDesc}
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {FEATURES.map((f, i) => (
+          {t.features.map((f, i) => (
             <motion.div
               key={f.t}
               initial={{ opacity: 0, y: 24 }}

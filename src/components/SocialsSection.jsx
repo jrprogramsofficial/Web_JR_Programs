@@ -2,24 +2,25 @@
 import { motion } from "framer-motion";
 import Icon from "./Icon";
 import SectionHead from "./SectionHead";
-import { SOCIALS } from "../data/content";
+import { useI18n } from "../i18n/context.js";
 
 export default function SocialsSection() {
+  const { t } = useI18n();
   return (
     <section id="redes" className="scroll-mt-24 max-w-5xl mx-auto px-6 py-20">
       <SectionHead
-        kicker="// 04 — REDES"
+        kicker={t.ui.socialsKicker}
         title={
           <>
-            Novedades y lanzamientos,{" "}
-            <span className="text-gradient">en mis redes</span>
+            {t.ui.socialsTitlePre}{" "}
+            <span className="text-gradient">{t.ui.socialsTitleAccent}</span>
           </>
         }
-        desc="Nuevas versiones, mejoras y contenido de VentaBox y TuOrden. Sígueme y no te pierdas nada."
+        desc={t.ui.socialsDesc}
       />
 
       <div className="grid sm:grid-cols-3 gap-5">
-        {SOCIALS.map((s, i) => (
+        {t.socials.map((s, i) => (
           <motion.a
             key={s.name}
             href={s.url}

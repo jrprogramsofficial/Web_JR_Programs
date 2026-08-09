@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import SectionHead from "./SectionHead";
-import { APPS } from "../data/content";
+import { useI18n } from "../i18n/context.js";
 
 /* Si la captura local aún no existe, muestra el respaldo sin romper el diseño */
 const handleImgError = (e, fallback) => {
@@ -15,20 +15,23 @@ const handleImgError = (e, fallback) => {
 };
 
 export default function AppsSection() {
+  const { t } = useI18n();
+  const { apps } = t;
   return (
     <section id="apps" className="scroll-mt-24 max-w-6xl mx-auto px-6 py-20">
       <SectionHead
-        kicker="// 01 — LAS APPS"
+        kicker={t.ui.appsKicker}
         title={
           <>
-            Dos herramientas, <span className="text-gradient">un objetivo</span>
+            {t.ui.appsTitlePre}{" "}
+            <span className="text-gradient">{t.ui.appsTitleAccent}</span>
           </>
         }
-        desc="Cada app resuelve una parte del día a día de tu negocio: vender y mantener todo en orden."
+        desc={t.ui.appsDesc}
       />
 
       <div className="grid md:grid-cols-2 gap-8">
-        {APPS.map((app, i) => (
+        {apps.map((app, i) => (
           <motion.article
             key={app.name}
             initial={{ opacity: 0, y: 32 }}
@@ -52,9 +55,8 @@ export default function AppsSection() {
                   className="w-1.5 h-1.5 rounded-full bg-[#34d399]"
                   style={{ animation: "pulseGlow 2s infinite" }}
                 />
-                lista para usar
-              </span>
-            </div>
+                {t.ui.readyToUse}
+              </span>            </div>
 
             <div className="p-7 space-y-5">
               <div className="flex items-center justify-between">
@@ -106,7 +108,7 @@ export default function AppsSection() {
                 to={`/apps/${app.slug}`}
                 className="group/link inline-flex items-center gap-2 pt-1 text-sm font-semibold text-[#38bdf8] hover:text-white transition-colors"
               >
-                Ver página de {app.name}
+                {t.ui.appsViewPage} {app.name}
                 <Icon
                   name="arrow"
                   className="w-4 h-4 transition-transform group-hover/link:translate-x-1"
