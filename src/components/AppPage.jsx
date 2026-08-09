@@ -6,7 +6,8 @@ import AppGallery from "./AppGallery";
 import NotFound from "./NotFound";
 import { APPS } from "../data/content";
 import { GALLERY } from "../data/gallery";
-import { useSEO, SEO_CONFIG } from "../utils/seo.jsx";
+import { SEO } from "../utils/seo.jsx";
+import { SEO_CONFIG } from "../data/seo.js";
 
 const handleImgError = (e, fallback) => {
   const el = e.currentTarget;
@@ -20,13 +21,14 @@ export default function AppPage() {
   const { slug } = useParams();
   const app = APPS.find((a) => a.slug === slug);
 
-  const seoKey = slug === 'ventabox' ? 'ventabox' : 'tuorden';
-  useSEO(SEO_CONFIG[seoKey]);
+  const seoKey = app ? app.slug : 'notfound';
 
   if (!app) return <NotFound />;
 
   return (
-    <main className="relative grid-bg pt-28 pb-24 overflow-hidden">
+    <>
+      <SEO {...SEO_CONFIG[seoKey]} />
+      <main className="relative grid-bg pt-28 pb-24 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -218,5 +220,6 @@ export default function AppPage() {
         </motion.div>
       </div>
     </main>
+    </>
   );
 }

@@ -33,7 +33,7 @@ export const APPS = [
     name: "VentaBox",
     slug: "ventabox",
     tagline: "Sistema de inventario y ventas",
-    ver: "v0.1.0",
+    ver: "v1.0",
     desc: "Controla el inventario general y por tienda, registra ventas, mermas y movimientos, y consulta reportes claros de tu negocio.",
     bullets: [
       "Inventario general y por tienda",

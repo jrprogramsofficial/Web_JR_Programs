@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Icon from "./Icon";
-import { useSEO, SEO_CONFIG } from "../utils/seo.jsx";
+import { SEO } from "../utils/seo.jsx";
+import { SEO_CONFIG } from "../data/seo.js";
 
 export default function NotFound() {
-  useSEO(SEO_CONFIG.notfound);
   return (
-    <main className="relative grid-bg min-h-[60vh] flex flex-col items-center justify-center text-center px-6 pt-24 pb-20">
+    <>
+      <SEO {...SEO_CONFIG.notfound} />
+      <main className="relative grid-bg min-h-[60vh] flex flex-col items-center justify-center text-center px-6 pt-24 pb-20">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
@@ -29,5 +31,6 @@ export default function NotFound() {
         </Link>
       </motion.div>
     </main>
+    </>
   );
 }
