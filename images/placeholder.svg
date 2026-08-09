@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#020617"/>
+  <defs>
+    <linearGradient id="phGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#phGrad)" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 330 190 L 270 225 L 330 260"/>
+    <path d="M 470 190 L 530 225 L 470 260"/>
+  </g>
+  <circle cx="400" cy="225" r="9" fill="#38bdf8"/>
+  <text x="400" y="320" text-anchor="middle" fill="#475569" font-family="monospace" font-size="24" letter-spacing="10">PRÓXIMAMENTE</text>
+</svg>
