@@ -6,17 +6,17 @@ const withBase = (p) => BASE + p.replace(/^\//, "");
 export const EN = {
   nav: [
     ["Apps", "#apps"],
+    ["Problems", "#problemas"],
     ["Features", "#features"],
     ["Platforms", "#plataformas"],
-    ["Pricing", "#oferta"],
     ["Socials", "#redes"],
   ],
 
   termLines: [
-    { t: "$ jr apps --list", c: "text-slate-200" },
-    { t: "▸ VentaBox · inventory & sales", c: "text-[#38bdf8]" },
+    { t: "$ jr solutions --list", c: "text-slate-200" },
+    { t: "▸ VentaBox · inventory control", c: "text-[#38bdf8]" },
     { t: "▸ TuOrden · bar & restaurant", c: "text-[#818cf8]" },
-    { t: "✔ 2 apps · windows · ready to use", c: "text-[#c084fc]" },
+    { t: "✔ 2 solutions · windows · ready to use", c: "text-[#c084fc]" },
   ],
 
   apps: [
@@ -25,7 +25,7 @@ export const EN = {
       slug: "ventabox",
       tagline: "Inventory and sales system",
       ver: "v1.0",
-      desc: "Control general and per-store inventory, record sales, waste and movements, and get clear reports for your business.",
+      desc: "Solves inventory chaos: general and per-store stock, sales, waste and movements recorded, and clear reports for your business.",
       bullets: [
         "General and per-store inventory",
         "Sales, waste and movements",
@@ -41,7 +41,7 @@ export const EN = {
       slug: "tuorden",
       tagline: "Bar and restaurant management",
       ver: null,
-      desc: "Orders, pending bills and supplies control so your bar or restaurant runs without chaos and with clear numbers.",
+      desc: "Ends the chaos in your bar or restaurant: orders, pending bills and supplies control so everything runs with clear numbers.",
       bullets: [
         "New order and pending bills",
         "Supplies and movements",
@@ -54,6 +54,51 @@ export const EN = {
     },
   ],
 
+  problems: [
+    {
+      icon: "layers",
+      apps: ["ventabox"],
+      problem: "Inventory out of control?",
+      solution:
+        "Every product, quantity and price of your stock, general and per store, in one place.",
+    },
+    {
+      icon: "cart",
+      apps: ["ventabox"],
+      problem: "Sales with no record?",
+      solution:
+        "Every sale is recorded instantly, with history you can browse by date, product or ticket.",
+    },
+    {
+      icon: "target",
+      apps: ["ventabox"],
+      problem: "Waste you can't track?",
+      solution:
+        "Every loss stays controlled so your inventory always reflects reality.",
+    },
+    {
+      icon: "bolt",
+      apps: ["tuorden"],
+      problem: "Order chaos at your bar?",
+      solution:
+        "New orders, tables and pending bills to collect, with nothing slipping away.",
+    },
+    {
+      icon: "box",
+      apps: ["tuorden"],
+      problem: "Supplies running out?",
+      solution:
+        "Supplies and movements control so you never run out at the key moment.",
+    },
+    {
+      icon: "refresh",
+      apps: ["ventabox", "tuorden"],
+      problem: "Decisions without data?",
+      solution:
+        "Clear sales, consumption and inventory reports to decide with numbers, not guesses.",
+    },
+  ],
+
   features: [
     {
       icon: "bolt",
@@ -63,7 +108,7 @@ export const EN = {
     {
       icon: "target",
       t: "Focused on your business",
-      d: "No filler features: only what you need to sell and keep your inventory in order.",
+      d: "No filler features: only what you need to keep your business running and in order.",
     },
     {
       icon: "layers",
@@ -86,9 +131,9 @@ export const EN = {
   ],
 
   marquee: [
-    "SALES",
-    "INVENTORY",
-    "CASH",
+    "CONTROL",
+    "ORDER",
+    "ORDERS",
     "STOCK",
     "REPORTS",
     "WASTE",
@@ -120,32 +165,6 @@ export const EN = {
   ],
 
   supportEmail: "jrprogramsofficial@gmail.com",
-
-  offer: {
-    ctaLabel: "WhatsApp",
-    ctaUrl: "https://wa.me/5351431995",
-    cardNote:
-      "Pick the plan that fits your business and message me on WhatsApp to arrange payment and get your license.",
-  },
-
-  offerPlans: [
-    { label: "Monthly", cup: "3000 CUP", usd: "$5" },
-    { label: "Every 6 months", cup: "15000 CUP", usd: "$25" },
-    { label: "Yearly", cup: "30000 CUP", usd: "$48", badge: "best value" },
-  ],
-
-  offers: [
-    {
-      slug: "ventabox",
-      detail:
-        "Recurring subscription for your store: inventory and sales always up to date.",
-    },
-    {
-      slug: "tuorden",
-      detail:
-        "Recurring subscription for your bar or restaurant: orders and bills without chaos.",
-    },
-  ],
 
   gallery: {
     ventabox: [
@@ -361,15 +380,15 @@ export const EN = {
 
   seo: {
     home: {
-      title: "JRPrograms — VentaBox and TuOrden",
+      title: "JRPrograms — Solutions for Your Business",
       description:
-        "Desktop apps for Windows: VentaBox (inventory and sales) and TuOrden (bar and restaurant). Ready to use, with direct tech support and constant updates.",
+        "VentaBox and TuOrden solve your business problems: inventory, sales and orders under control. Desktop apps for Windows, ready to use.",
       path: "/",
     },
     ventabox: {
       title: "VentaBox — Inventory and Sales System | JRPrograms",
       description:
-        "Control general and per-store inventory, record sales, waste and movements. Clear reports for your business. Windows. Ready to use.",
+        "Solves stock chaos: general and per-store inventory, sales, waste and movements recorded. Clear reports to decide with data. Windows.",
       path: "/apps/ventabox",
       image: "/images/VentaBox.png",
     },
@@ -396,35 +415,44 @@ export const EN = {
     langAria: "Change language",
 
     // Hero
-    heroBadge: "ready to use · windows",
-    heroTitlePre: "Your sales and inventory,",
-    heroTitleAccent: "under control",
+    heroBadge: "solutions for your business · windows",
+    heroTitlePre: "Your business problems,",
+    heroTitleAccent: "solved",
     heroTitlePost: ".",
     heroDesc:
-      "JRPrograms presents VentaBox and TuOrden: two desktop tools to manage inventory, sales and orders for your business, without complications.",
-    heroCtaApps: "View the apps",
+      "JRPrograms presents VentaBox and TuOrden: two desktop tools that solve your business day-to-day problems — inventory, sales and orders — without complications.",
+    heroCtaApps: "View the solutions",
     heroCtaFeatures: "Features",
     heroFollow: "Follow me",
-    heroFloatReady: "ready to use",
+    heroFloatReady: "made for your business",
+
+    // Problems
+    problemsKicker: "// 02 — PROBLEMS",
+    problemsTitlePre: "Business problems,",
+    problemsTitleAccent: "solved",
+    problemsDesc:
+      "These are the most common day-to-day problems and how JRPrograms apps solve them.",
+    problemLabel: "problem",
+    solvedBy: "solved by",
 
     // Apps
     appsKicker: "// 01 — THE APPS",
     appsTitlePre: "Two tools,",
     appsTitleAccent: "one goal",
     appsDesc:
-      "Each app solves a part of your business day-to-day: selling and keeping everything in order.",
+      "Each app solves a concrete group of problems in your business and keeps everything in order.",
     readyToUse: "ready to use",
     appsViewPage: "View page of",
 
     // Features
-    featuresKicker: "// 02 — FEATURES",
+    featuresKicker: "// 03 — FEATURES",
     featuresTitlePre: "Built to work,",
     featuresTitleAccent: "not to get in the way",
     featuresDesc:
       "The JRPrograms philosophy applied to every app in the family.",
 
     // Platforms
-    platformsKicker: "// 03 — PLATFORMS",
+    platformsKicker: "// 04 — PLATFORMS",
     platformsTitlePre: "Windows today,",
     platformsTitleAccent: "tomorrow we'll see",
     platformsDesc:
@@ -433,21 +461,11 @@ export const EN = {
     platformsNo: "not for now",
 
     // Socials
-    socialsKicker: "// 04 — SOCIALS",
+    socialsKicker: "// 05 — SOCIALS",
     socialsTitlePre: "News and releases,",
     socialsTitleAccent: "on my socials",
     socialsDesc:
       "New versions, improvements and content about VentaBox and TuOrden. Follow me and don't miss anything.",
-
-    // Offer
-    offerKicker: "// 05 — PRICING",
-    offerTitlePre: "Recurring",
-    offerTitleAccent: "plans",
-    offerDesc:
-      "VentaBox and TuOrden are available by subscription: monthly, every 6 months or yearly, in CUP or USD. Pick your plan and message me on WhatsApp.",
-    offerCta: "Ask via",
-    offerSecondary: "or message me on socials",
-    offerTrial: "7-day free trial · full access to the app",
 
     // Contact
     contactTitlePre: "Having issues with an app?",
@@ -485,7 +503,7 @@ export const EN = {
     // Footer
     footDeveloper: "SOFTWARE DEVELOPER",
     footDesc:
-      "Management tools for your business: inventory, sales and orders, simple and to the point.",
+      "Tools that solve your business problems: inventory, sales and orders, simple and to the point.",
     footAppsTitle: "APPS",
     footNavTitle: "NAVIGATION",
     footContact: "Contact",

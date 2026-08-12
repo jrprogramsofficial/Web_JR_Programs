@@ -6,17 +6,17 @@ const withBase = (p) => BASE + p.replace(/^\//, "");
 export const ES = {
   nav: [
     ["Apps", "#apps"],
+    ["Problemas", "#problemas"],
     ["Características", "#features"],
     ["Plataformas", "#plataformas"],
-    ["Oferta", "#oferta"],
     ["Redes", "#redes"],
   ],
 
   termLines: [
-    { t: "$ jr apps --list", c: "text-slate-200" },
-    { t: "▸ VentaBox · inventario y ventas", c: "text-[#38bdf8]" },
+    { t: "$ jr solutions --list", c: "text-slate-200" },
+    { t: "▸ VentaBox · control de inventario", c: "text-[#38bdf8]" },
     { t: "▸ TuOrden · bar & restaurante", c: "text-[#818cf8]" },
-    { t: "✔ 2 apps · windows · listas para usar", c: "text-[#c084fc]" },
+    { t: "✔ 2 soluciones · windows · listas para usar", c: "text-[#c084fc]" },
   ],
 
   apps: [
@@ -25,7 +25,7 @@ export const ES = {
       slug: "ventabox",
       tagline: "Sistema de inventario y ventas",
       ver: "v1.0",
-      desc: "Controla el inventario general y por tienda, registra ventas, mermas y movimientos, y consulta reportes claros de tu negocio.",
+      desc: "Resuelve el descontrol del stock: inventario general y por tienda, ventas, mermas y movimientos registrados, y reportes claros de tu negocio.",
       bullets: [
         "Inventario general y por tienda",
         "Ventas, mermas y movimientos",
@@ -41,7 +41,7 @@ export const ES = {
       slug: "tuorden",
       tagline: "Gestión para bar y restaurante",
       ver: null,
-      desc: "Órdenes, cuentas pendientes y control de materiales para que tu bar o restaurante funcione sin caos y con números claros.",
+      desc: "Acaba con el caos de tu bar o restaurante: órdenes, cuentas pendientes y control de materiales para que todo funcione con números claros.",
       bullets: [
         "Nueva orden y cuentas pendientes",
         "Materiales y movimientos",
@@ -54,6 +54,51 @@ export const ES = {
     },
   ],
 
+  problems: [
+    {
+      icon: "layers",
+      apps: ["ventabox"],
+      problem: "¿Inventario descontrolado?",
+      solution:
+        "Cada producto, cantidad y precio de tu stock, general y por tienda, en un solo lugar.",
+    },
+    {
+      icon: "cart",
+      apps: ["ventabox"],
+      problem: "¿Ventas sin registro?",
+      solution:
+        "Cada venta queda registrada al instante, con historial consultable por fecha, producto o ticket.",
+    },
+    {
+      icon: "target",
+      apps: ["ventabox"],
+      problem: "¿Mermas que se pierden?",
+      solution:
+        "Cada pérdida queda controlada para que tu inventario refleje siempre la realidad.",
+    },
+    {
+      icon: "bolt",
+      apps: ["tuorden"],
+      problem: "¿Caos de órdenes en tu bar?",
+      solution:
+        "Órdenes nuevas, mesas y cuentas pendientes por cobrar, sin que nada se escape.",
+    },
+    {
+      icon: "box",
+      apps: ["tuorden"],
+      problem: "¿Materiales que se agotan?",
+      solution:
+        "Control de insumos y movimientos para nunca quedarte sin nada en el momento clave.",
+    },
+    {
+      icon: "refresh",
+      apps: ["ventabox", "tuorden"],
+      problem: "¿Decisiones sin datos?",
+      solution:
+        "Reportes claros de ventas, consumo e inventario para decidir con números, no con suposiciones.",
+    },
+  ],
+
   features: [
     {
       icon: "bolt",
@@ -63,7 +108,7 @@ export const ES = {
     {
       icon: "target",
       t: "Enfocadas en tu negocio",
-      d: "Sin funciones de relleno: solo lo necesario para vender y mantener tu inventario en orden.",
+      d: "Sin funciones de relleno: solo lo necesario para que tu negocio funcione y se mantenga en orden.",
     },
     {
       icon: "layers",
@@ -86,9 +131,9 @@ export const ES = {
   ],
 
   marquee: [
-    "VENTAS",
-    "INVENTARIO",
-    "CAJA",
+    "CONTROL",
+    "ORDEN",
+    "ÓRDENES",
     "STOCK",
     "REPORTES",
     "MERMAS",
@@ -120,32 +165,6 @@ export const ES = {
   ],
 
   supportEmail: "jrprogramsofficial@gmail.com",
-
-  offer: {
-    ctaLabel: "WhatsApp",
-    ctaUrl: "https://wa.me/5351431995",
-    cardNote:
-      "Elige el plan que mejor se adapte a tu negocio y escríbeme por WhatsApp para concretar el pago y recibir tu licencia.",
-  },
-
-  offerPlans: [
-    { label: "Mensual", cup: "3000 CUP", usd: "$5" },
-    { label: "Cada 6 meses", cup: "15000 CUP", usd: "$25" },
-    { label: "Anual", cup: "30000 CUP", usd: "$48", badge: "mejor precio" },
-  ],
-
-  offers: [
-    {
-      slug: "ventabox",
-      detail:
-        "Suscripción periódica para tu tienda: inventario y ventas siempre al día.",
-    },
-    {
-      slug: "tuorden",
-      detail:
-        "Suscripción periódica para tu bar o restaurante: órdenes y cuentas sin caos.",
-    },
-  ],
 
   gallery: {
     ventabox: [
@@ -361,15 +380,15 @@ export const ES = {
 
   seo: {
     home: {
-      title: "JRPrograms — VentaBox y TuOrden",
+      title: "JRPrograms — Soluciones para tu negocio",
       description:
-        "Apps de escritorio para Windows: VentaBox (inventario y ventas) y TuOrden (bar y restaurante). Listas para usar, con soporte técnico directo y actualizaciones constantes.",
+        "VentaBox y TuOrden resuelven los problemas de tu negocio: inventario, ventas y órdenes bajo control. Apps de escritorio para Windows, listas para usar.",
       path: "/",
     },
     ventabox: {
       title: "VentaBox — Sistema de Inventario y Ventas | JRPrograms",
       description:
-        "Controla el inventario general y por tienda, registra ventas, mermas y movimientos. Reportes claros para tu negocio. Windows. Lista para usar.",
+        "Resuelve el descontrol de tu stock: inventario general y por tienda, ventas, mermas y movimientos registrados. Reportes claros para decidir con datos. Windows.",
       path: "/apps/ventabox",
       image: "/images/VentaBox.png",
     },
@@ -396,34 +415,43 @@ export const ES = {
     langAria: "Cambiar idioma",
 
     // Hero
-    heroBadge: "listas para usar · windows",
-    heroTitlePre: "Tus ventas y tu inventario,",
-    heroTitleAccent: "bajo control",
+    heroBadge: "soluciones para tu negocio · windows",
+    heroTitlePre: "Los problemas de tu negocio,",
+    heroTitleAccent: "resueltos",
     heroTitlePost: ".",
     heroDesc:
-      "JRPrograms presenta VentaBox y TuOrden: dos herramientas de escritorio para gestionar inventario, ventas y órdenes de tu negocio, sin complicaciones.",
-    heroCtaApps: "Ver las apps",
+      "JRPrograms presenta VentaBox y TuOrden: dos herramientas de escritorio que resuelven los problemas del día a día de tu negocio — inventario, ventas y órdenes — sin complicaciones.",
+    heroCtaApps: "Ver las soluciones",
     heroCtaFeatures: "Características",
     heroFollow: "Sígueme",
-    heroFloatReady: "listas para usar",
+    heroFloatReady: "hechas para tu negocio",
+
+    // Problems
+    problemsKicker: "// 02 — PROBLEMAS",
+    problemsTitlePre: "Problemas de negocios,",
+    problemsTitleAccent: "con solución",
+    problemsDesc:
+      "Estos son los problemas más comunes del día a día y cómo las apps de JRPrograms los resuelven.",
+    problemLabel: "problema",
+    solvedBy: "lo resuelve",
 
     // Apps
     appsKicker: "// 01 — LAS APPS",
     appsTitlePre: "Dos herramientas,",
     appsTitleAccent: "un objetivo",
     appsDesc:
-      "Cada app resuelve una parte del día a día de tu negocio: vender y mantener todo en orden.",
+      "Cada app resuelve un grupo de problemas concretos de tu negocio y lo mantiene todo en orden.",
     readyToUse: "lista para usar",
     appsViewPage: "Ver página de",
 
     // Features
-    featuresKicker: "// 02 — CARACTERÍSTICAS",
+    featuresKicker: "// 03 — CARACTERÍSTICAS",
     featuresTitlePre: "Hechas para trabajar,",
     featuresTitleAccent: "no para estorbar",
     featuresDesc: "La filosofía de JRPrograms aplicada a cada app de la familia.",
 
     // Platforms
-    platformsKicker: "// 03 — PLATAFORMAS",
+    platformsKicker: "// 04 — PLATAFORMAS",
     platformsTitlePre: "Windows hoy,",
     platformsTitleAccent: "mañana ya veremos",
     platformsDesc:
@@ -432,21 +460,11 @@ export const ES = {
     platformsNo: "por ahora no",
 
     // Socials
-    socialsKicker: "// 04 — REDES",
+    socialsKicker: "// 05 — REDES",
     socialsTitlePre: "Novedades y lanzamientos,",
     socialsTitleAccent: "en mis redes",
     socialsDesc:
       "Nuevas versiones, mejoras y contenido de VentaBox y TuOrden. Sígueme y no te pierdas nada.",
-
-    // Offer
-    offerKicker: "// 05 — OFERTA",
-    offerTitlePre: "Planes",
-    offerTitleAccent: "periódicos",
-    offerDesc:
-      "VentaBox y TuOrden se contratan por suscripción: mensual, semestral o anual, en CUP o USD. Elige tu plan y escríbeme por WhatsApp.",
-    offerCta: "Consultar por",
-    offerSecondary: "o escríbeme por las redes",
-    offerTrial: "7 días de prueba gratis · uso completo de la app",
 
     // Contact
     contactTitlePre: "¿Problemas con una app?",
@@ -484,7 +502,7 @@ export const ES = {
     // Footer
     footDeveloper: "SOFTWARE DEVELOPER",
     footDesc:
-      "Herramientas de gestión para tu negocio: inventario, ventas y órdenes, simples y al grano.",
+      "Herramientas que resuelven los problemas de tu negocio: inventario, ventas y órdenes, simples y al grano.",
     footAppsTitle: "APPS",
     footNavTitle: "NAVEGACIÓN",
     footContact: "Contacto",
